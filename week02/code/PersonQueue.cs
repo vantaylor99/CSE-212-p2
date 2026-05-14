@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 /// <summary>
 /// A basic implementation of a Queue
 /// </summary>
@@ -6,6 +8,7 @@ public class PersonQueue
     private readonly List<Person> _queue = new();
 
     public int Length => _queue.Count;
+    private int _count = 0;
 
     /// <summary>
     /// Add a person to the queue
@@ -13,7 +16,10 @@ public class PersonQueue
     /// <param name="person">The person to add</param>
     public void Enqueue(Person person)
     {
-        _queue.Insert(0, person);
+
+        Debug.WriteLine(person.Name + " Turns:" + person.Turns + $" Enqueue Count {_count}");
+        _count++;
+        _queue.Add(person);
     }
 
     public Person Dequeue()
